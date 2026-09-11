@@ -14,7 +14,7 @@ public class Main {
                 System.out.println(command.substring(5));
             }
             else {
-                System.out.println(command + " : command not found");
+                System.out.println(command + ": command not found");
             }
         }
     }
