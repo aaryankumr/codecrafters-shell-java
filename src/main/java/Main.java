@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -19,16 +20,32 @@ public class Main {
                     System.out.println(target + " is a shell builtin");
                 }
                 else{
-                    System.out.println(target + " not found");
-
+                    String path = System.getenv("PATH");
+                    boolean found = false;
+                    if(path!= null){
+                        String[] directiories = path.split(File.pathSeparator);
+                        for(String directory : directiories){
+                            File file = new File(directory, target);
+                            if(file.exists()
+                            && file.isFile()
+                            && file.canExecute()){
+                                System.out.println(target+ "is" + file.getAbsolutePath());
+                                found =true;
+                                break;
+                            }
+                        }
+                    }
+                    if(!found){
+                        System.out.println(target + ":not found");
+                    }
                 }
-            }
 
 
 
-            else {
-                System.out.println(command + ": command not found");
-            }
+
+            else{
+                    System.out.println(command + ": command not found");
+                }}
         }
     }
 }
