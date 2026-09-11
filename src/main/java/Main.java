@@ -8,6 +8,7 @@ public class Main {
             Scanner scan = new Scanner(System.in);
             String command = scan.nextLine();
             if (command.equals("exit")) {
+
                 break;
             }
             if(command.startsWith("echo ")) {
