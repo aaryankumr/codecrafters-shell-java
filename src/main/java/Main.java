@@ -12,8 +12,12 @@ public class Main {
             }
             if(command.startsWith("echo ")) {
                 System.out.println(command.substring(5));
-            }
-            else {
+            } else if (command.startsWith("type")) {
+                String target = command.substring(5);
+                if(target.equals("echo") || target.equals("type") || target.equals("exit") ){
+                    System.out.println(target + "is a shell bulletin");
+                }
+            } else {
                 System.out.println(command + ": command not found");
             }
         }
